@@ -15,13 +15,13 @@ import UIKit
 public protocol LPRTableViewDelegate: NSObjectProtocol {
 	
 	/** Provides the delegate a chance to modify the cell visually before dragging occurs. Defaults to using the cell as-is if not implemented. */
-	optional func tableView(tableView: UITableView, draggingCell cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) -> UITableViewCell
+	optional func tableView(tableView: UITableView!, draggingCell cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	
 	/** Called within an animation block when the dragging view is about to show. */
-	optional func tableView(tableView: UITableView, showDraggingView view: UIView, atIndexPath indexPath: NSIndexPath)
+	optional func tableView(tableView: UITableView!, showDraggingView view: UIView, atIndexPath indexPath: NSIndexPath)
 	
 	/** Called within an animation block when the dragging view is about to hide. */
-	optional func tableView(tableView: UITableView, hideDraggingView view: UIView, atIndexPath indexPath: NSIndexPath)
+	optional func tableView(tableView: UITableView!, hideDraggingView view: UIView, atIndexPath indexPath: NSIndexPath)
 	
 }
 
@@ -52,7 +52,7 @@ public class LPRTableView: UITableView {
 	}
 	}
 	
-	public convenience override init()  {
+	public convenience init()  {
 		self.init(frame: CGRectZero)
 	}
 	
@@ -301,7 +301,7 @@ extension LPRTableView {
 public class LPRTableViewController: UITableViewController, LPRTableViewDelegate {
 	
 	/** Returns the long press to reorder table view managed by the controller object. */
-	public var lprTableView: LPRTableView! { return tableView as LPRTableView }
+	public var lprTableView: LPRTableView! { return tableView as! LPRTableView }
 	
 	public override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
